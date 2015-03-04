@@ -1,0 +1,100 @@
+<div class="background">
+  <!-- =========================
+	SECTION: HOME / HEADER
+	============================== -->
+  <header>
+    <!-- STICKY NAVIGATION -->
+    <div class="navbar navbar-inverse bs-docs-nav navbar-fixed-top sticky-navigation" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+
+          <!-- LOGO -->
+          <a class="navbar-brand" href="#">
+            <img src="../assets/img/logo-nav.png" alt="">
+          </a>
+        </div>
+
+        <!-- TOP BAR -->
+        <div class="navbar-collapse collapse" id="stamp-navigation">
+
+          <span ng-show="broadcasting" class="label pull-right label-success">
+					<span class="glyphicon glyphicon-record" aria-hidden="true"></span>LIVE!
+          </span>
+        </div>
+      </div>
+      <!-- /END CONTAINER -->
+
+    </div>
+    <!-- /END STICKY NAVIGATION -->
+  </header>
+
+  <!-- =========================
+	SECTION: Container
+	============================== -->
+  <div class="container content-pg">
+
+
+    <div class="row card space-top" ng-show="requiresApproval">
+      <div class="col-sm-2 center">
+        <h2>
+          <span class="glyphicon glyphicon-arrow-up"></span>
+          <span class="glyphicon glyphicon-facetime-video"></span>
+        </h2>
+      </div>
+      <div class="col-sm-10 text-center">
+        <h2>Please allow Streamium to use the camera.</h2>
+      </div>
+    </div>
+
+    <div class="row space-top" ng-hide="requiresApproval">
+      <div class="col-md-12">
+        <span class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-xs-12 col-xs-offset-0 card">
+          <span class="glyphicon glyphicon-facetime-video"></span> &nbsp;Share this link with your viewers: <a>{{client.getLink()}}</a>
+        </span>
+      </div>
+    </div>
+
+    <div class="row" ng-hide="requiresApproval">
+      <div class="col-md-12">
+        <video class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-xs-12 col-xs-offset-0 stream-video" id="video" muted="true" ng-src="{{videoSrc}}" autoplay></video>
+      </div>
+    </div>
+
+    <div class="row" ng-hide="requiresApproval">
+      <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-xs-12 col-xs-offset-0 ">
+        <div class="col-md-8 col-sm-8 stream-data">
+          <ul class="list-unstyled">
+            <li>
+              Balance: {{client.totalMoney | SATOSHIS2BTC}} BTC
+            </li>
+            <li>
+              {{client.rate}} BTC/min
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-sm-4 stream-data">
+          <ul class="list-unstyled">
+            <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{client.clientConnections.length}}</li>
+            <li>
+              ({{client.rate|BTC2USD}} $/min)
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" ng-hide="requiresApproval">
+      <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-xs-12 col-xs-offset-0 ">
+        <button type="button" class="btn btn-danger btn-lg btn-end btn-full" ng-click="end()">
+          <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> End
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    //$('#copylink').tooltip('show');
+  });
+</script>

@@ -1,0 +1,55 @@
+/* app css stylesheet */
+
+.center { text-align: center; }
+.space-top { margin-top: 40px; }
+.space-top-big { margin-top: 80px; }
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+.card {
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px #333;
+}
+
+.card h3 {
+  margin-top: 0px;
+}
+
+.card.card-status .glyphicon {
+  font-size: 2.4rem;
+}
+
+.background {
+  padding-bottom: 20px;
+}
+
